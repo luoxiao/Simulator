@@ -32,6 +32,10 @@ class Device {
     return Path.devices.URLByAppendingPathComponent("\(udid)")
   }
 
+  var hasContent: Bool {
+    return !applications.isEmpty
+  }
+
   // MARK: - Load
 
   static func load() -> [Device] {
@@ -50,11 +54,14 @@ class Device {
     var devices: [Device] = []
     (json["devices"] as? JSONDictionary)?.forEach { (key, value) in
       (value as? JSONArray)?.forEach { deviceJSON in
-        let device = Device(osInfo: key, json: deviceJSON)
+        let device = Device(osInfo: key.remove("com.apple.CoreSimulator.SimRuntime."),
+                            json: deviceJSON)
         devices.append(device)
       }
     }
 
-    return devices
+    return devices.filter {
+      return $0.hasContent && $0.isAvailable
+    }
   }
 }

@@ -12,7 +12,9 @@ class MenuController: NSObject, NSMenuDelegate {
     statusItem.menu = statusMenu
     statusItem.menu?.delegate = self
 
-    Device.load()
+    Menu.load(Device.load()).forEach {
+      statusMenu.addItem($0)
+    }
   }
 
   // MARK: - NSMenuDelegate
