@@ -10,12 +10,5 @@ class MenuController: NSObject {
 
     statusItem.image = NSImage(named: "icon")
     statusItem.menu = statusMenu
-    statusItem.action = #selector(statusItemTouched(_:))
-  }
-
-  // MARK: - Action
-
-  func statusItemTouched(item: NSStatusItem) {
-    print("reload")
   }
 }
