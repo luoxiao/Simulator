@@ -10,6 +10,7 @@
 		D2F4AF7A1D857E4E0007CAA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4AF791D857E4E0007CAA6 /* AppDelegate.swift */; };
 		D2F4AF7C1D857E4E0007CAA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F4AF7B1D857E4E0007CAA6 /* Assets.xcassets */; };
 		D2F4AF7F1D857E4E0007CAA6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F4AF7D1D857E4E0007CAA6 /* MainMenu.xib */; };
+		D2F4AF871D8589A20007CAA6 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4AF861D8589A20007CAA6 /* MenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +19,7 @@
 		D2F4AF7B1D857E4E0007CAA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2F4AF7E1D857E4E0007CAA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D2F4AF801D857E4E0007CAA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2F4AF861D8589A20007CAA6 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 				D2F4AF7B1D857E4E0007CAA6 /* Assets.xcassets */,
 				D2F4AF7D1D857E4E0007CAA6 /* MainMenu.xib */,
 				D2F4AF801D857E4E0007CAA6 /* Info.plist */,
+				D2F4AF861D8589A20007CAA6 /* MenuController.swift */,
 			);
 			path = Simulator;
 			sourceTree = "<group>";
@@ -128,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2F4AF871D8589A20007CAA6 /* MenuController.swift in Sources */,
 				D2F4AF7A1D857E4E0007CAA6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,11 +19,12 @@
                 </menuItem>
             </items>
         </menu>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Simulator" customModuleProvider="target">
+        <customObject id="SRu-IO-4bd" customClass="MenuController" customModule="Simulator" customModuleProvider="target">
             <connections>
-                <outlet property="statusMenu" destination="faV-e6-anR" id="e7f-6n-hHA"/>
+                <outlet property="statusMenu" destination="faV-e6-anR" id="C9P-rH-gPw"/>
             </connections>
         </customObject>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Simulator" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
     </objects>
 </document>
