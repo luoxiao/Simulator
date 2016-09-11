@@ -1,8 +1,9 @@
 import Cocoa
 
-struct AppGroup {
+class AppGroup {
 
   var bundleIdentifier: String = ""
+  var location: String = ""
 
   // MARK: - Init
 

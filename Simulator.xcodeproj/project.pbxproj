@@ -16,6 +16,7 @@
 		D2F4AF8D1D858CE90007CAA6 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4AF8C1D858CE90007CAA6 /* AppGroup.swift */; };
 		D2F4AF8F1D858DFB0007CAA6 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4AF8E1D858DFB0007CAA6 /* Loader.swift */; };
 		D2F4AF911D858E4C0007CAA6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4AF901D858E4C0007CAA6 /* Task.swift */; };
+		D2F4AF9C1D859CCC0007CAA6 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4AF9B1D859CCC0007CAA6 /* Dictionary+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D2F4AF8C1D858CE90007CAA6 /* AppGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		D2F4AF8E1D858DFB0007CAA6 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		D2F4AF901D858E4C0007CAA6 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		D2F4AF9B1D859CCC0007CAA6 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		D2F4AF781D857E4E0007CAA6 /* Simulator */ = {
 			isa = PBXGroup;
 			children = (
+				D2F4AF9A1D859CBF0007CAA6 /* Extensions */,
 				D2F4AF791D857E4E0007CAA6 /* AppDelegate.swift */,
 				D2F4AF7B1D857E4E0007CAA6 /* Assets.xcassets */,
 				D2F4AF7D1D857E4E0007CAA6 /* MainMenu.xib */,
@@ -74,6 +77,14 @@
 				D2F4AF901D858E4C0007CAA6 /* Task.swift */,
 			);
 			path = Simulator;
+			sourceTree = "<group>";
+		};
+		D2F4AF9A1D859CBF0007CAA6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D2F4AF9B1D859CCC0007CAA6 /* Dictionary+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +164,7 @@
 				D2F4AF871D8589A20007CAA6 /* MenuController.swift in Sources */,
 				D2F4AF911D858E4C0007CAA6 /* Task.swift in Sources */,
 				D2F4AF7A1D857E4E0007CAA6 /* AppDelegate.swift in Sources */,
+				D2F4AF9C1D859CCC0007CAA6 /* Dictionary+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +307,7 @@
 				D2F4AF851D857E4E0007CAA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

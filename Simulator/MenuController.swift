@@ -1,6 +1,6 @@
 import Cocoa
 
-class MenuController: NSObject {
+class MenuController: NSObject, NSMenuDelegate {
 
   @IBOutlet var statusMenu: NSMenu!
   let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
@@ -10,5 +10,13 @@ class MenuController: NSObject {
 
     statusItem.image = NSImage(named: "icon")
     statusItem.menu = statusMenu
+    statusItem.menu?.delegate = self
+  }
+
+  // MARK: - NSMenuDelegate
+
+  func menuWillOpen(menu: NSMenu) {
+    let loader = Loader()
+    loader.load()
   }
 }

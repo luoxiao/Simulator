@@ -1,10 +1,11 @@
 import Cocoa
 
-struct Application {
+class Application {
 
   var name: String = ""
   var icon: NSImage?
   var bundleIdentifier: String = ""
+  var location: String = ""
 
   // MARK: - Init
 
