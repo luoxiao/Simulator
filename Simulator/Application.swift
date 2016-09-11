@@ -14,6 +14,8 @@ class Application {
     
   }
 
+  // MARK: - Load
+
   static func load(path: NSURL) -> [Application] {
     let directory = path.URLByAppendingPathComponent("data/Containers/Bundle/Application")
     return File.directories(directory)

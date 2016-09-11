@@ -12,14 +12,12 @@ class MenuController: NSObject, NSMenuDelegate {
     statusItem.menu = statusMenu
     statusItem.menu?.delegate = self
 
-    let loader = Loader()
-    loader.load()
+    Device.load()
   }
 
   // MARK: - NSMenuDelegate
 
   func menuWillOpen(menu: NSMenu) {
-    let loader = Loader()
-    loader.load()
+    
   }
 }

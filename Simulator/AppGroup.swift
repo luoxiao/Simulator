@@ -12,6 +12,8 @@ class AppGroup {
     
   }
 
+  // MARK: - Load
+
   static func load(path: NSURL) -> [AppGroup] {
     let directory = path.URLByAppendingPathComponent("/data/Containers/Shared/AppGroup")
     return File.directories(directory)

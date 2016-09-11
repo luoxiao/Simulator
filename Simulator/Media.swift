@@ -5,9 +5,13 @@ class Media {
   var name: String = ""
   var location: NSURL?
 
+  // MARK: - Media
+
   init() {
     
   }
+
+  // MARK: - Load
 
   static func load(path: NSURL) -> [Media] {
     let directory = path.URLByAppendingPathComponent("/data/Media/DCIM")
