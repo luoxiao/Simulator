@@ -3,15 +3,15 @@ import Cocoa
 struct Task {
 
   static func output(launchPath: String, arguments: [String],
-                     directoryPath: String? = nil) -> String {
+                     directoryPath: NSURL? = nil) -> String {
 
     let task = NSTask()
     task.launchPath = launchPath
     task.arguments = arguments
     task.standardOutput = NSPipe()
 
-    if let directoryPath = directoryPath {
-      task.currentDirectoryPath = directoryPath
+    if let path = directoryPath?.removeTrailingSlash.path {
+      task.currentDirectoryPath = path
     }
 
     let file = task.standardOutput?.fileHandleForReading

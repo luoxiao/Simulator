@@ -11,6 +11,9 @@ class MenuController: NSObject, NSMenuDelegate {
     statusItem.image = NSImage(named: "icon")
     statusItem.menu = statusMenu
     statusItem.menu?.delegate = self
+
+    let loader = Loader()
+    loader.load()
   }
 
   // MARK: - NSMenuDelegate

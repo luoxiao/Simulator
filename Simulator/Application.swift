@@ -5,11 +5,24 @@ class Application {
   var name: String = ""
   var icon: NSImage?
   var bundleIdentifier: String = ""
-  var location: String = ""
+  var udid: String = ""
+  var location: NSURL?
 
   // MARK: - Init
 
-  init(uuid: String) {
+  init() {
     
+  }
+
+  static func load(path: NSURL) -> [Application] {
+    let directory = path.URLByAppendingPathComponent("data/Containers/Bundle/Application")
+    return File.directories(directory)
+    .map {
+      let application = Application()
+      application.udid = $0.lastPathComponent ?? ""
+      application.location = $0
+
+      return application
+    }
   }
 }

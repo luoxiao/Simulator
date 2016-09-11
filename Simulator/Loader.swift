@@ -11,7 +11,8 @@ class Loader {
   // MARK: - Load
 
   func load() -> [Device] {
-    let string = Task.output("/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"])
+    let string = Task.output("/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"],
+                             directoryPath: Path.devices)
 
     guard let data = string.dataUsingEncoding(NSUTF8StringEncoding),
       jsonObject = try? NSJSONSerialization.JSONObjectWithData(data, options: []) as? JSONDictionary,
@@ -25,14 +26,7 @@ class Loader {
     var devices: [Device] = []
     (json["devices"] as? JSONDictionary)?.forEach { (key, value) in
       (value as? JSONArray)?.forEach { deviceJSON in
-        let device = Device()
-        device.name = deviceJSON.string("name")
-        device.uuid = deviceJSON.string("uuid")
-        device.isAvailable = deviceJSON.string("availability").containsString("(available)")
-        device.isOpen = deviceJSON.string("state").containsString("Booted")
-        device.os = key.componentsSeparatedByString(" ").first ?? ""
-        device.version = key.componentsSeparatedByString(" ").last ?? ""
-
+        let device = Device(osInfo: key, json: deviceJSON)
         devices.append(device)
       }
     }

@@ -13,3 +13,11 @@ extension Dictionary {
     return ""
   }
 }
+
+
+extension NSDictionary {
+
+  func string(name: String) -> String {
+    return self[name] as? String ?? ""
+  }
+}
