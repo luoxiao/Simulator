@@ -16,13 +16,15 @@ class AppGroup {
     let directory = path.URLByAppendingPathComponent("/data/Containers/Shared/AppGroup")
     return File.directories(directory)
     .map {
-      let plistPath = $0.URLByAppendingPathComponent("/.com.apple.mobile_container_manager.metadata.plist")
+      let appGroup = AppGroup()
+      appGroup.location = path.URLByAppendingPathComponent($0)
+
+      let plistPath = appGroup.location!.URLByAppendingPathComponent("/.com.apple.mobile_container_manager.metadata.plist")
       let json = NSDictionary(contentsOfURL: plistPath)
 
-      let appGroup = AppGroup()
       appGroup.bundleIdentifier = json?.string("MCMMetadataIdentifier") ?? ""
-      appGroup.udid = $0.lastPathComponent ?? ""
-      appGroup.location = $0
+      appGroup.udid = $0
+
 
       return appGroup
     }.filter {

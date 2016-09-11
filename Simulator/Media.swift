@@ -15,8 +15,8 @@ class Media {
     return File.directories(directory)
     .map {
       let media = Media()
-      media.name = $0.lastPathComponent ?? ""
-      media.location = $0
+      media.name = $0
+      media.location = path.URLByAppendingPathComponent($0)
 
       return media
     }

@@ -2,13 +2,11 @@ import Cocoa
 
 struct File {
 
-  static func directories(path: NSURL) -> [NSURL] {
+  static func directories(path: NSURL) -> [String] {
     let results = try? NSFileManager.defaultManager()
       .contentsOfDirectoryAtPath(path.path!)
       .filter {
-        return isDirectory($0)
-      }.map {
-        return NSURL(fileURLWithPath: $0)
+        return isDirectory(path.URLByAppendingPathComponent("\($0)").path!)
       }
 
     return results ?? []

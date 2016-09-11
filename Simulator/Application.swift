@@ -19,8 +19,8 @@ class Application {
     return File.directories(directory)
     .map {
       let application = Application()
-      application.udid = $0.lastPathComponent ?? ""
-      application.location = $0
+      application.udid = $0
+      application.location = path.URLByAppendingPathComponent($0)
 
       return application
     }
