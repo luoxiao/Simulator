@@ -4,8 +4,7 @@ class Device {
 
   let name: String
   let udid: String
-  let os: String
-  let version: String
+  let osInfo: String
   let isOpen: Bool
   let isAvailable: Bool
 
@@ -20,9 +19,7 @@ class Device {
     self.udid = json.string("udid")
     self.isAvailable = json.string("availability").containsString("(available)")
     self.isOpen = json.string("state").containsString("Booted")
-    self.os = osInfo.componentsSeparatedByString(" ").first ?? ""
-    self.version = osInfo.componentsSeparatedByString(" ").last ?? ""
-
+    self.osInfo = osInfo
     self.applications = Application.load(location)
     self.appGroups = AppGroup.load(location)
     self.media = Media.load(location)
@@ -30,6 +27,14 @@ class Device {
 
   var location: NSURL {
     return Path.devices.URLByAppendingPathComponent("\(udid)")
+  }
+
+  var os: OS {
+    return OS(rawValue: osInfo.componentsSeparatedByString(" ").first ?? "") ?? .unknown
+  }
+
+  var version: String {
+    return osInfo.componentsSeparatedByString(" ").last ?? ""
   }
 
   var hasContent: Bool {
@@ -61,7 +66,9 @@ class Device {
     }
 
     return devices.filter {
-      return $0.hasContent && $0.isAvailable
+      return $0.hasContent && $0.isAvailable && $0.os != .unknown
+    }.sort {
+      return $0.osInfo.compare($1.osInfo) == .OrderedAscending
     }
   }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2078DB51D874FBE00D9C561 /* OS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2078DB41D874FBE00D9C561 /* OS.swift */; };
 		D2F4AF7A1D857E4E0007CAA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4AF791D857E4E0007CAA6 /* AppDelegate.swift */; };
 		D2F4AF7C1D857E4E0007CAA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F4AF7B1D857E4E0007CAA6 /* Assets.xcassets */; };
 		D2F4AF7F1D857E4E0007CAA6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F4AF7D1D857E4E0007CAA6 /* MainMenu.xib */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D2078DB41D874FBE00D9C561 /* OS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OS.swift; sourceTree = "<group>"; };
 		D2F4AF761D857E4E0007CAA6 /* Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F4AF791D857E4E0007CAA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2F4AF7B1D857E4E0007CAA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				D2F4AFB11D85FB280007CAA6 /* Application.swift */,
 				D2F4AFB21D85FB280007CAA6 /* Device.swift */,
 				D2F4AFB31D85FB280007CAA6 /* Media.swift */,
+				D2078DB41D874FBE00D9C561 /* OS.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				D2F4AFBB1D85FB280007CAA6 /* MenuController.swift in Sources */,
 				D2F4AFC41D85FE6E0007CAA6 /* String+Extensions.swift in Sources */,
 				D2F4AFC11D85FB280007CAA6 /* Path.swift in Sources */,
+				D2078DB51D874FBE00D9C561 /* OS.swift in Sources */,
 				D2F4AFBD1D85FB280007CAA6 /* Application.swift in Sources */,
 				D2F4AFBC1D85FB280007CAA6 /* AppGroup.swift in Sources */,
 				D2F4AFC21D85FB280007CAA6 /* Task.swift in Sources */,
