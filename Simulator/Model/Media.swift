@@ -17,8 +17,6 @@ class Media: NSObject {
       media.location = directory.URLByAppendingPathComponent($0)
 
       return media
-    }.filter {
-      return !$0.name.hasPrefix(".")
     }
   }
 

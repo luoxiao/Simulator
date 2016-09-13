@@ -17,9 +17,20 @@ class Application: NSObject {
       let application = Application()
       application.udid = $0
       application.location = directory.URLByAppendingPathComponent($0)
+      application.loadInfo()
 
       return application
     }
+  }
+
+  func loadInfo() {
+    guard let location = location,
+      app = File.directories(location).first,
+      json = NSDictionary(contentsOfURL: location.URLByAppendingPathComponent("\(app)/Info.plist"))
+    else { return }
+
+    name = json.string("CFBundleName") ?? ""
+    bundleIdentifier = json.string("CFBundleIdentifier") ?? ""
   }
 
   func handleMenuItem(item: NSMenuItem) {

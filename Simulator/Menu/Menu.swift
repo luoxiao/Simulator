@@ -68,7 +68,7 @@ struct Menu {
   private static func load(applications: [Application]) -> [NSMenuItem] {
     return applications.map {
       let item = NSMenuItem()
-      item.title = $0.udid
+      item.title = $0.name
       item.enabled = true
       item.target = $0
       item.action = Selector("handleMenuItem:")
