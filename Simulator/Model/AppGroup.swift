@@ -4,7 +4,6 @@ class AppGroup: NSObject {
 
   var bundleIdentifier: String = ""
   var location: NSURL?
-  var udid: String = ""
 
   // MARK: - Load
 
@@ -19,8 +18,6 @@ class AppGroup: NSObject {
       let json = NSDictionary(contentsOfURL: plistPath)
 
       appGroup.bundleIdentifier = json?.string("MCMMetadataIdentifier") ?? ""
-      appGroup.udid = $0
-
 
       return appGroup
     }.filter {
