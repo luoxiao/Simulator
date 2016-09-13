@@ -9,11 +9,12 @@ struct Menu {
 
     devices.forEach {
       if $0.osInfo != osInfo {
+        osInfo = $0.osInfo
+        
         if !items.isEmpty {
           items.append(NSMenuItem.separatorItem())
         }
-        items.append(Menu.header(osInfo))
-        osInfo = $0.osInfo
+        items.append(Menu.header($0.osInfo))
       }
 
       items.append(load($0))
@@ -35,6 +36,7 @@ struct Menu {
 
     let applications = load(device.applications)
     if !applications.isEmpty {
+      menu.addItem(NSMenuItem.separatorItem())
       menu.addItem(Menu.header("Applications"))
       applications.forEach {
         menu.addItem($0)
@@ -43,6 +45,7 @@ struct Menu {
 
     let appGroups = load(device.appGroups)
     if !appGroups.isEmpty {
+      menu.addItem(NSMenuItem.separatorItem())
       menu.addItem(Menu.header("App Groups"))
       appGroups.forEach {
         menu.addItem($0)
@@ -51,6 +54,7 @@ struct Menu {
 
     let media = load(device.media)
     if !media.isEmpty {
+      menu.addItem(NSMenuItem.separatorItem())
       menu.addItem(Menu.header("Media"))
       media.forEach {
         menu.addItem($0)

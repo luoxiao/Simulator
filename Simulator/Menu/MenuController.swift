@@ -2,19 +2,27 @@ import Cocoa
 
 class MenuController: NSObject, NSMenuDelegate {
 
-  @IBOutlet var statusMenu: NSMenu!
   let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
 
   override func awakeFromNib() {
     super.awakeFromNib()
 
     statusItem.image = NSImage(named: "icon")
-    statusItem.menu = statusMenu
-    statusItem.menu?.delegate = self
+    statusItem.menu = makeMenu()
+  }
+
+  // MARK: - Menu
+
+  func makeMenu() -> NSMenu {
+    let menu = NSMenu()
+    menu.delegate = self
+    menu.autoenablesItems = false
 
     Menu.load(Device.load()).forEach {
-      statusMenu.addItem($0)
+      menu.addItem($0)
     }
+
+    return menu
   }
 
   // MARK: - NSMenuDelegate
