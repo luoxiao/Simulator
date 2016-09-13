@@ -71,7 +71,7 @@ struct Menu {
       item.title = $0.name
       item.enabled = true
       item.target = $0
-      item.action = Selector("handleMenuItem:")
+      item.action = #selector(Application.handleMenuItem(_:))
 
       return item
     }
@@ -83,7 +83,7 @@ struct Menu {
       item.title = $0.bundleIdentifier
       item.enabled = true
       item.target = $0
-      item.action = Selector("handleMenuItem:")
+      item.action = #selector(AppGroup.handleMenuItem(_:))
 
       return item
     }
@@ -95,7 +95,7 @@ struct Menu {
       item.title = $0.name
       item.enabled = true
       item.target = $0
-      item.action = Selector("handleMenuItem:")
+      item.action = #selector(Media.handleMenuItem(_:))
 
       return item
     }

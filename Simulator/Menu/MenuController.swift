@@ -49,6 +49,6 @@ class MenuController: NSObject, NSMenuDelegate {
   // MARK: - NSMenuDelegate
 
   func menuWillOpen(menu: NSMenu) {
-    statusItem.menu = makeMenu()
+    
   }
 }
