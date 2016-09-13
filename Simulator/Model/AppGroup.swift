@@ -24,7 +24,7 @@ class AppGroup: NSObject {
 
       return appGroup
     }.filter {
-      return !$0.bundleIdentifier.containsString("group.com.apple")
+      return !$0.bundleIdentifier.containsString("com.apple")
     }
   }
 
