@@ -1,16 +1,10 @@
 import Cocoa
 
-class AppGroup {
+class AppGroup: NSObject {
 
   var bundleIdentifier: String = ""
   var location: NSURL?
   var udid: String = ""
-
-  // MARK: - Init
-
-  init() {
-    
-  }
 
   // MARK: - Load
 
@@ -19,7 +13,7 @@ class AppGroup {
     return File.directories(directory)
     .map {
       let appGroup = AppGroup()
-      appGroup.location = path.URLByAppendingPathComponent($0)
+      appGroup.location = directory.URLByAppendingPathComponent($0)
 
       let plistPath = appGroup.location!.URLByAppendingPathComponent("/.com.apple.mobile_container_manager.metadata.plist")
       let json = NSDictionary(contentsOfURL: plistPath)
@@ -32,5 +26,10 @@ class AppGroup {
     }.filter {
       return !$0.bundleIdentifier.containsString("group.com.apple")
     }
+  }
+
+  func handleMenuItem(item: NSMenuItem) {
+    guard let location = location else { return }
+    NSWorkspace.sharedWorkspace().openURL(location)
   }
 }

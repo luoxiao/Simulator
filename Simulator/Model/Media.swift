@@ -1,15 +1,9 @@
 import Cocoa
 
-class Media {
+class Media: NSObject {
 
   var name: String = ""
   var location: NSURL?
-
-  // MARK: - Media
-
-  init() {
-    
-  }
 
   // MARK: - Load
 
@@ -20,9 +14,14 @@ class Media {
     .map {
       let media = Media()
       media.name = $0
-      media.location = path.URLByAppendingPathComponent($0)
+      media.location = directory.URLByAppendingPathComponent($0)
 
       return media
     }
+  }
+
+  func handleMenuItem(item: NSMenuItem) {
+    guard let location = location else { return }
+    NSWorkspace.sharedWorkspace().openURL(location)
   }
 }

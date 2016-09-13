@@ -3,6 +3,7 @@ import Cocoa
 class MenuController: NSObject, NSMenuDelegate {
 
   let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+  var devices: [Device] = []
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -18,7 +19,8 @@ class MenuController: NSObject, NSMenuDelegate {
     menu.delegate = self
     menu.autoenablesItems = false
 
-    Menu.load(Device.load()).forEach {
+    devices = Device.load()
+    Menu.load(devices).forEach {
       menu.addItem($0)
     }
 

@@ -70,6 +70,8 @@ struct Menu {
       let item = NSMenuItem()
       item.title = $0.udid
       item.enabled = true
+      item.target = $0
+      item.action = Selector("handleMenuItem:")
 
       return item
     }
@@ -80,6 +82,8 @@ struct Menu {
       let item = NSMenuItem()
       item.title = $0.bundleIdentifier
       item.enabled = true
+      item.target = $0
+      item.action = Selector("handleMenuItem:")
 
       return item
     }
@@ -90,6 +94,8 @@ struct Menu {
       let item = NSMenuItem()
       item.title = $0.name
       item.enabled = true
+      item.target = $0
+      item.action = Selector("handleMenuItem:")
 
       return item
     }
