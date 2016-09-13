@@ -24,7 +24,26 @@ class MenuController: NSObject, NSMenuDelegate {
       menu.addItem($0)
     }
 
+    menu.addItem(NSMenuItem.separatorItem())
+    menu.addItem(makeQuitItem())
+
     return menu
+  }
+
+  func makeQuitItem() -> NSMenuItem {
+    let item = NSMenuItem()
+    item.title = "Quit"
+    item.enabled = true
+    item.target = self
+    item.action = #selector(quit(_:))
+
+    return item
+  }
+
+  // MARK: - Action
+
+  func quit(item: NSMenuItem) {
+    NSApplication.sharedApplication().terminate(self)
   }
 
   // MARK: - NSMenuDelegate
