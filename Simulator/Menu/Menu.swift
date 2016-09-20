@@ -2,7 +2,7 @@ import Cocoa
 
 struct Menu {
 
-  static func load(devices: [Device]) -> [NSMenuItem] {
+  static func load(_ devices: [Device]) -> [NSMenuItem] {
     var items: [NSMenuItem] = []
 
     var osInfo: String = ""
@@ -12,7 +12,7 @@ struct Menu {
         osInfo = $0.osInfo
         
         if !items.isEmpty {
-          items.append(NSMenuItem.separatorItem())
+          items.append(NSMenuItem.separator())
         }
         items.append(Menu.header($0.osInfo))
       }
@@ -23,10 +23,10 @@ struct Menu {
     return items
   }
 
-  static func load(device: Device) -> NSMenuItem {
+  static func load(_ device: Device) -> NSMenuItem {
     let item = NSMenuItem()
     item.title = device.name
-    item.enabled = device.isAvailable
+    item.isEnabled = device.isAvailable
     item.state = device.isOpen ? 1 : 0
     item.onStateImage = NSImage(named: "on")
     item.offStateImage = NSImage(named: "off")
@@ -36,7 +36,7 @@ struct Menu {
 
     let applications = load(device.applications)
     if !applications.isEmpty {
-      menu.addItem(NSMenuItem.separatorItem())
+      menu.addItem(NSMenuItem.separator())
       menu.addItem(Menu.header("Applications"))
       applications.forEach {
         menu.addItem($0)
@@ -45,7 +45,7 @@ struct Menu {
 
     let appGroups = load(device.appGroups)
     if !appGroups.isEmpty {
-      menu.addItem(NSMenuItem.separatorItem())
+      menu.addItem(NSMenuItem.separator())
       menu.addItem(Menu.header("App Groups"))
       appGroups.forEach {
         menu.addItem($0)
@@ -54,7 +54,7 @@ struct Menu {
 
     let media = load(device.media)
     if !media.isEmpty {
-      menu.addItem(NSMenuItem.separatorItem())
+      menu.addItem(NSMenuItem.separator())
       menu.addItem(Menu.header("Media"))
       media.forEach {
         menu.addItem($0)
@@ -65,11 +65,11 @@ struct Menu {
     return item
   }
 
-  private static func load(applications: [Application]) -> [NSMenuItem] {
+  private static func load(_ applications: [Application]) -> [NSMenuItem] {
     return applications.map {
       let item = NSMenuItem()
       item.title = $0.name
-      item.enabled = true
+      item.isEnabled = true
       item.target = $0
       item.action = #selector(Application.handleMenuItem(_:))
 
@@ -77,11 +77,11 @@ struct Menu {
     }
   }
 
-  private static func load(appGroups: [AppGroup]) -> [NSMenuItem] {
+  private static func load(_ appGroups: [AppGroup]) -> [NSMenuItem] {
     return appGroups.map {
       let item = NSMenuItem()
       item.title = $0.bundleIdentifier
-      item.enabled = true
+      item.isEnabled = true
       item.target = $0
       item.action = #selector(AppGroup.handleMenuItem(_:))
 
@@ -89,11 +89,11 @@ struct Menu {
     }
   }
 
-  private static func load(media: [Media]) -> [NSMenuItem] {
+  private static func load(_ media: [Media]) -> [NSMenuItem] {
     return media.map {
       let item = NSMenuItem()
       item.title = $0.name
-      item.enabled = true
+      item.isEnabled = true
       item.target = $0
       item.action = #selector(Media.handleMenuItem(_:))
 
@@ -103,10 +103,10 @@ struct Menu {
 
   // MARK: - Helper
 
-  private static func header(title: String) -> NSMenuItem {
+  private static func header(_ title: String) -> NSMenuItem {
     let item = NSMenuItem()
     item.title = title
-    item.enabled = false
+    item.isEnabled = false
 
     return item
   }

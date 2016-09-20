@@ -2,7 +2,7 @@ import Cocoa
 
 extension String {
 
-  func remove(string: String) -> String {
-    return stringByReplacingOccurrencesOfString(string, withString: "")
+  func remove(_ string: String) -> String {
+    return replacingOccurrences(of: string, with: "")
   }
 }

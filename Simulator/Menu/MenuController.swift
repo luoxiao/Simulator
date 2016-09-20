@@ -2,7 +2,7 @@ import Cocoa
 
 class MenuController: NSObject, NSMenuDelegate {
 
-  let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+  let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
   var devices: [Device] = []
 
   override func awakeFromNib() {
@@ -24,7 +24,7 @@ class MenuController: NSObject, NSMenuDelegate {
       menu.addItem($0)
     }
 
-    menu.addItem(NSMenuItem.separatorItem())
+    menu.addItem(NSMenuItem.separator())
     menu.addItem(makeQuitItem())
 
     return menu
@@ -33,7 +33,7 @@ class MenuController: NSObject, NSMenuDelegate {
   func makeQuitItem() -> NSMenuItem {
     let item = NSMenuItem()
     item.title = "Quit"
-    item.enabled = true
+    item.isEnabled = true
     item.target = self
     item.action = #selector(quit(_:))
 
@@ -42,13 +42,13 @@ class MenuController: NSObject, NSMenuDelegate {
 
   // MARK: - Action
 
-  func quit(item: NSMenuItem) {
-    NSApplication.sharedApplication().terminate(self)
+  func quit(_ item: NSMenuItem) {
+    NSApplication.shared().terminate(self)
   }
 
   // MARK: - NSMenuDelegate
 
-  func menuWillOpen(menu: NSMenu) {
+  func menuWillOpen(_ menu: NSMenu) {
     
   }
 }

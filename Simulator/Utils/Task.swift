@@ -3,30 +3,30 @@ import Cocoa
 struct Task {
 
   static func output(launchPath: String, arguments: [String],
-                     directoryPath: NSURL? = nil) -> String {
+                     directoryPath: URL? = nil) -> String {
 
-    let task = NSTask()
+    let output = Pipe()
+    
+    let task = Process()
     task.launchPath = launchPath
     task.arguments = arguments
-    task.standardOutput = NSPipe()
+    task.standardOutput = output
 
     if let path = directoryPath?.removeTrailingSlash.path {
       task.currentDirectoryPath = path
     }
 
-    let file = task.standardOutput?.fileHandleForReading
     task.launch()
 
     // For some reason [task waitUntilExit]; does not return sometimes. Therefore this rather hackish solution:
     var count = 0;
-    while task.running && count < 10 {
-      NSThread.sleepForTimeInterval(0.1)
+    while task.isRunning && count < 10 {
+      Thread.sleep(forTimeInterval: 0.1)
       count += 1
     }
 
-    guard let data = file?.readDataToEndOfFile(),
-      result = String(data: data, encoding: NSUTF8StringEncoding)
-      else {
+    let data = output.fileHandleForReading.readDataToEndOfFile()
+    guard let result = String(data: data, encoding: .utf8) else {
       return ""
     }
 

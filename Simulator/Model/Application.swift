@@ -6,43 +6,43 @@ class Application: NSObject {
   var icon: NSImage?
   var bundleIdentifier: String = ""
   var udid: String = ""
-  var path: NSURL?
+  var path: URL?
 
-  lazy var location: NSURL? = self.loadDataLocation()
+  lazy var location: URL? = self.loadDataLocation()
 
   // MARK: - Load
 
-  static func load(path: NSURL) -> [Application] {
-    let directory = path.URLByAppendingPathComponent("data/Containers/Bundle/Application")
+  static func load(_ path: URL) -> [Application] {
+    let directory = path.appendingPathComponent("data/Containers/Bundle/Application")
     return File.directories(directory)
     .map {
       let application = Application()
       application.path = path
-      application.loadInfo(directory.URLByAppendingPathComponent($0))
+      application.loadInfo(directory.appendingPathComponent($0))
 
       return application
     }
   }
 
   // Can also use xcrun simctl get_app_container
-  func loadInfo(bundleLocation: NSURL) {
+  func loadInfo(_ bundleLocation: URL) {
     guard let app = File.directories(bundleLocation).first,
-      json = NSDictionary(contentsOfURL: bundleLocation.URLByAppendingPathComponent("\(app)/Info.plist"))
+      let json = NSDictionary(contentsOf: bundleLocation.appendingPathComponent("\(app)/Info.plist"))
     else { return }
 
-    name = json.string("CFBundleName") ?? ""
-    bundleIdentifier = json.string("CFBundleIdentifier") ?? ""
+    name = json.string("CFBundleName") 
+    bundleIdentifier = json.string("CFBundleIdentifier") 
   }
 
-  func loadDataLocation() -> NSURL? {
+  func loadDataLocation() -> URL? {
     guard let path = path else { return nil }
-    let directory = path.URLByAppendingPathComponent("data/Containers/Data/Application")
+    let directory = path.appendingPathComponent("data/Containers/Data/Application")
 
     let plist = ".com.apple.mobile_container_manager.metadata.plist"
     for udid in File.directories(directory) {
-      let dataPath = directory.URLByAppendingPathComponent(udid)
-      let plistPath = dataPath.URLByAppendingPathComponent(plist)
-      guard let json = NSDictionary(contentsOfURL: plistPath)
+      let dataPath = directory.appendingPathComponent(udid)
+      let plistPath = dataPath.appendingPathComponent(plist)
+      guard let json = NSDictionary(contentsOf: plistPath)
         else { continue }
 
       let metaDataIdentifier = json.string("MCMMetadataIdentifier")
@@ -55,8 +55,8 @@ class Application: NSObject {
     return nil
   }
 
-  func handleMenuItem(item: NSMenuItem) {
+  func handleMenuItem(_ item: NSMenuItem) {
     guard let location = location else { return }
-    NSWorkspace.sharedWorkspace().openURL(location)
+    NSWorkspace.shared().open(location)
   }
 }

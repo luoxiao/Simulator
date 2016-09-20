@@ -1,11 +1,11 @@
 import Foundation
 
-extension NSURL {
+extension URL {
 
-  var removeTrailingSlash: NSURL {
+  var removeTrailingSlash: URL {
     guard absoluteString.hasSuffix("/") else { return self }
 
-    let string = absoluteString.substringToIndex(absoluteString.endIndex.predecessor())
-    return NSURL(string: string)!
+    let string = absoluteString.substring(to: absoluteString.characters.index(before: absoluteString.endIndex))
+    return URL(string: string)!
   }
 }
