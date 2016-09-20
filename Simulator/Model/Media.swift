@@ -3,25 +3,25 @@ import Cocoa
 class Media: NSObject {
 
   var name: String = ""
-  var location: NSURL?
+  var location: URL?
 
   // MARK: - Load
 
-  static func load(path: NSURL) -> [Media] {
-    let directory = path.URLByAppendingPathComponent("/data/Media/DCIM")
+  static func load(_ path: URL) -> [Media] {
+    let directory = path.appendingPathComponent("/data/Media/DCIM")
 
     return File.directories(directory)
     .map {
       let media = Media()
       media.name = $0
-      media.location = directory.URLByAppendingPathComponent($0)
+      media.location = directory.appendingPathComponent($0)
 
       return media
     }
   }
 
-  func handleMenuItem(item: NSMenuItem) {
+  func handleMenuItem(_ item: NSMenuItem) {
     guard let location = location else { return }
-    NSWorkspace.sharedWorkspace().openURL(location)
+    NSWorkspace.shared().open(location)
   }
 }

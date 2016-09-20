@@ -5,7 +5,7 @@ typealias JSONArray = [JSONDictionary]
 
 extension Dictionary {
 
-  func string(name: String) -> String {
+  func string(_ name: String) -> String {
     if let name = name as? Key {
       return self[name] as? String ?? ""
     }
@@ -17,7 +17,7 @@ extension Dictionary {
 
 extension NSDictionary {
 
-  func string(name: String) -> String {
+  func string(_ name: String) -> String {
     return self[name] as? String ?? ""
   }
 }
